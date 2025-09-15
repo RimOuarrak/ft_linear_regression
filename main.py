@@ -36,11 +36,11 @@ x3 = X_scaled[2]
 x4 = X_scaled[3]
 x5 = X_scaled[4]
 
-print(estimated_price(x1, theta0, theta1))
-print(estimated_price(x2, theta0, theta1))
-print(estimated_price(x3, theta0, theta1))
-print(estimated_price(x4, theta0, theta1))
-print(estimated_price(x5, theta0, theta1))
+# print(estimated_price(x1, theta0, theta1))
+# print(estimated_price(x2, theta0, theta1))
+# print(estimated_price(x3, theta0, theta1))
+# print(estimated_price(x4, theta0, theta1))
+# print(estimated_price(x5, theta0, theta1))
 
 
 def cost_function(X_scaled,Y, theta0, theta1):
@@ -73,6 +73,11 @@ for i in range(num_iterations):
     theta0 = theta0 - alpha * (sum_error_theta0 / len(X_scaled))
     theta1 = theta1 - alpha * (sum_error_theta1 / len(X_scaled))
 
-    if (i + 1) % 100 == 0:
-        print(f"Iteration {i+1}, theta0={theta0}, theta1={theta1}")
+    # if (i + 1) % 100 == 0:
+    #     print(f"Iteration {i+1}, theta0={theta0}, theta1={theta1}")
+
+mileage = float(input("Enter the mileage of the car: "))
+mileage_scaled = (mileage - min(X)) / (max(X) - min(X))
+predicted_price = estimated_price(mileage_scaled, theta0, theta1)
+print(f"The estimated price for a car with {mileage} miles is: ${predicted_price:.2f}")
 
